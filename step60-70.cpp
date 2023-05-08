@@ -28,5 +28,31 @@ int main()
     }
 
     file.close();   // this is unnecessary since it automatically does it for you
+    
+    //reading from files with ifstream:
+    std::ifstream read_file ("hello.txt");
+
+    /*
+    std::vector<std::string> read_names;
+
+    std::string input;  //string reads each input until whitespace is found. "char input;" would read each letter as input
+    while(read_file >> input)
+    {
+        read_names.push_back(input);
+    }
+
+    for(std::string read_name : read_names)
+    {
+        std::cout << read_name << std::endl;
+    }
+    */
+
+    // other ways to read from a file is using get() and getline()
+    char temp_read = read_file.get();   //get() reads just one character
+    std::cout << temp_read << std::endl;
+
+    std::string store_line;
+    getline(read_file, store_line);
+    std::cout << store_line << std::endl;
     return 0;
 }
