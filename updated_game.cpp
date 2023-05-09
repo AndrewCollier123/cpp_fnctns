@@ -3,6 +3,24 @@
 #include <ctime>
 #include <fstream>
 
+void save_score(int guess_count)
+{
+    std::ifstream input("best_score.txt");
+
+   int best_score;
+   input >> best_score;
+
+   std::ofstream output("best_score.txt");
+   if(guess_count < best_score)      // if you want to reset number in "best_score.txt" make sure to manually change the value in the file and save it
+   {
+        output << guess_count;
+   }
+   else
+   {
+        output << best_score;
+   }
+}
+
 void print_vector(std::vector<int> vector)
 {
     for(int i = 0; i < vector.size(); i++)
@@ -41,20 +59,7 @@ void play_game()
         }
     }
 
-   std::ifstream input("best_score.txt");
-
-   int best_score;
-   input >> best_score;
-
-   std::ofstream output("best_score.txt");
-   if(guesses.size() < best_score)      // if you want to reset number in "best_score.txt" make sure to manually change the value in the file and save it
-   {
-        output << guesses.size();
-   }
-   else
-   {
-        output << best_score;
-   }
+    save_score(guesses.size());
 
     print_vector(guesses);
 }
