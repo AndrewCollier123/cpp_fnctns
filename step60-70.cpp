@@ -54,5 +54,29 @@ int main()
     std::string store_line;
     getline(read_file, store_line);
     std::cout << store_line << std::endl;
+
+    //multidimensional arrays and nested vectors
+    int multi_array[][3] = {{1,2,3}, {4,5,6},{7,8,9}};  //only need to specify size on inner arrays
+    
+    for(int row = 0; row < 3; row++)
+    {
+        for(int col = 0; col < 3; col++)
+        {
+            std::cout << multi_array[row][col] << "  ";
+        }
+        std::cout << std::endl;
+    }
+
+    //nested vector (not statically sized)
+    std::vector<std::vector<int>> nested_vector = {{1,2,3}, {4,5,6},{7,8,9}};
+    for(int row = 0; row < 3; row++)
+    {
+        for(int col = 0; col < 3; col++)
+        {
+            std::cout << nested_vector[row][col] << "  ";
+        }
+        std::cout << std::endl;
+    }
+    
     return 0;
 }
